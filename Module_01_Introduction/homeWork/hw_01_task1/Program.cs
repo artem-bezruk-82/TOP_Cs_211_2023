@@ -10,7 +10,7 @@
 // Если пользователь ввел значение не в диапазоне от 1 до 100 требуется вывести сообщение об ошибке.
 
 
-namespace cw_01_task1
+namespace hw_01_task1
 {
     internal class Program
     {
