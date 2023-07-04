@@ -11,10 +11,17 @@ namespace material_03_task1
     {
         static void Main(string[] args)
         {
-            Article articleA = new Article("article A", 2.5);
-            Console.WriteLine(articleA);
-            Article articleB = new Article("article B", 0.5);
-            Console.WriteLine(articleB);
+            Article article = new Article();
+            Article article1 = new Article("article 1", 12);
+            Article article2 = new Article("article 2", null);
+            Article article3 = new Article("article 3");
+            Article? article4 = null;
+
+            Console.WriteLine(article);
+            Console.WriteLine(article1);
+            Console.WriteLine(article2);
+            Console.WriteLine(article3);
+            Console.WriteLine(article4);
         }
     }
 }
