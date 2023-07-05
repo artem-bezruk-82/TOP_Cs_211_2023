@@ -15,14 +15,14 @@ namespace material_03_task2
         public string LastName { get; set; }
         public Address ClientAddress { get; set; }
 
-        private string _phone;
+        private string? _phone;
 
-        public string Phone
+        public string? Phone
         {
             get { return _phone; }
             set
             {
-                if (value.Length != 11)
+                if (value?.Length != 11)
                 {
                     throw new ArgumentOutOfRangeException(value, message: "Telephon number must contain 11 digits");
                 }
