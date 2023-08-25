@@ -1,5 +1,8 @@
-﻿// Тема: Введение в платформу Microsoft .NET. Основы языка программирования C#
+﻿// КУРС: ПЛАТФОРМА MICROSOFT .NET И ЯЗЫК ПРОГРАММИРОВАНИЯ C#
+// Модуль 1
+// Тема: Введение в платформу Microsoft .NET. Основы языка программирования C#
 // ДОМАШНЕЕ ЗАДАНИЕ
+
 // Задание 2
 // Пользователь вводит с клавиатуры два числа.
 // Первое число — это значение, второе число процент, который необходимо посчитать.
@@ -16,18 +19,15 @@ namespace hw_01_task2
 
             while (EndProgram("\nWould you like new colculation?"))
             {
+                double baseValue = GetUserInputConsole("\nPlease enter base value");
+                double persentage = GetUserInputConsole("\nPlease enter persentage value");
                 try
                 {
-                    Console.WriteLine("\nPlease enter base value");
-                    double baseValue = double.Parse(Console.ReadLine() ?? string.Empty);
-                    Console.WriteLine("Please enter persentage value");
-                    double persentage = double.Parse(Console.ReadLine() ?? string.Empty);
                     double result = GetPersentageOperation(baseValue, persentage);
                     Console.WriteLine($"{persentage}% of {baseValue} is {result}");
                 }
                 catch (Exception exc)
                 {
-
                     Console.WriteLine(exc.Message);
                 }
             }
@@ -35,6 +35,23 @@ namespace hw_01_task2
             Console.WriteLine("\nThank you for using uor program! Goodby!");
         }
 
+        static double GetUserInputConsole(string requestText)
+        {
+            double? userInputConsole = null;
+            while (userInputConsole == null) 
+            {
+                Console.WriteLine($"\n{requestText}, {typeof(double)} value");
+                try
+                {
+                    userInputConsole = double.Parse(Console.ReadLine() ?? string.Empty);
+                }
+                catch (Exception exc) 
+                {
+                    Console.WriteLine($"{exc.Message} Entered value should be {typeof(double)} type");
+                }
+            }
+            return (double)userInputConsole;
+        }
 
         static double GetPersentageOperation(double value, double percentage)
         {
