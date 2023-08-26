@@ -9,6 +9,8 @@
 //По итогам работы приложения необходимо показать статистику действий. 
 
 
+using System.Text;
+
 namespace hw_03_task7
 {
     internal class Program
@@ -27,14 +29,14 @@ namespace hw_03_task7
 
             string unacceptableWord = "die";
 
-            string replacement = string.Empty;
+            StringBuilder replacement = new StringBuilder();
 
             for (int i = 0; i < unacceptableWord.Length; i++)
             {
-                replacement += '*';
+                replacement.Append('*');
             }
 
-            string outputText = inputText.Replace(unacceptableWord, replacement);
+            string outputText = inputText.Replace(unacceptableWord, replacement.ToString());
 
             Console.WriteLine(outputText);
         }

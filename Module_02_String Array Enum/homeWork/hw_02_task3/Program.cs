@@ -7,6 +7,8 @@
 //Пользователь вводит строку с клавиатуры. Необходимо зашифровать данную строку используя шифр Цезаря.
 //Кроме механизма шифровки, реализуйте механизм расшифрования.
 
+using System.Text;
+
 namespace hw_02_task3
 {
     internal class Program
@@ -33,7 +35,7 @@ namespace hw_02_task3
             int lowerCaseStartRange = 97;
             int lowerCaseEndRange = 122;
 
-            string output = string.Empty;
+            StringBuilder output = new StringBuilder();
 
             for (int i = 0; i < input.Length; i++)
             {
@@ -42,31 +44,31 @@ namespace hw_02_task3
                 {
                     if (charCode - caesarShift < upperCaseStartRange)
                     {
-                        output += $"{(char)(upperCaseEndRange - (upperCaseStartRange - (charCode - caesarShift) - 1))}";
+                        output.Append($"{(char)(upperCaseEndRange - (upperCaseStartRange - (charCode - caesarShift) - 1))}");
                     }
                     else
                     {
-                        output += $"{(char)(charCode - caesarShift)}";
+                        output.Append($"{(char)(charCode - caesarShift)}");
                     }
                 }
                 else if (charCode >= lowerCaseStartRange && charCode <= lowerCaseEndRange)
                 {
                     if (charCode - caesarShift < lowerCaseStartRange)
                     {
-                        output += $"{(char)(lowerCaseEndRange - (lowerCaseStartRange - (charCode - caesarShift) - 1))}";
+                        output.Append($"{(char)(lowerCaseEndRange - (lowerCaseStartRange - (charCode - caesarShift) - 1))}");
                     }
                     else
                     {
-                        output += $"{(char)(charCode - caesarShift)}";
+                        output.Append($"{(char)(charCode - caesarShift)}");
                     }
                 }
                 else
                 {
-                    output += input[i];
+                    output.Append(input[i]);
                 }
             }
 
-            return output;
+            return output.ToString();
         }
 
         static string GetCaesarEncriptedString(string input, int caesarShift)
@@ -76,7 +78,7 @@ namespace hw_02_task3
             int lowerCaseStartRange = 97;
             int lowerCaseEndRange = 122;
 
-            string output = string.Empty;
+            StringBuilder output = new StringBuilder();
 
             for (int i = 0; i < input.Length; i++)
             {
@@ -85,31 +87,31 @@ namespace hw_02_task3
                 {
                     if (charCode + caesarShift > upperCaseEndRange)
                     {
-                        output += $"{(char)(upperCaseStartRange - (upperCaseEndRange - charCode - caesarShift))}";
+                        output.Append($"{(char)(upperCaseStartRange - (upperCaseEndRange - charCode - caesarShift))}");
                     }
                     else
                     {
-                        output += $"{(char)(charCode + caesarShift)}";
+                        output.Append($"{(char)(charCode + caesarShift)}");
                     }
                 }
                 else if (charCode >= lowerCaseStartRange && charCode <= lowerCaseEndRange)
                 {
                     if (charCode + caesarShift > lowerCaseEndRange)
                     {
-                        output += $"{(char)(lowerCaseStartRange - (lowerCaseEndRange - charCode - caesarShift) - 1)}";
+                        output.Append($"{(char)(lowerCaseStartRange - (lowerCaseEndRange - charCode - caesarShift) - 1)}");
                     }
                     else
                     {
-                        output += $"{(char)(charCode + caesarShift)}";
+                        output.Append($"{(char)(charCode + caesarShift)}");
                     }
                 }
                 else
                 {
-                    output += input[i];
+                    output.Append(input[i]);
                 }
             }
 
-            return output;
+            return output.ToString();
         }
 
     }
