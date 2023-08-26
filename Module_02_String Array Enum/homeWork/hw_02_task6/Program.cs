@@ -11,7 +11,7 @@
 
 using System.Text;
 
-namespace hw_03_task6
+namespace hw_02_task6
 {
     internal class Program
     {

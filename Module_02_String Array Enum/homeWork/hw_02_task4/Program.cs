@@ -10,7 +10,7 @@
 //Произведение матриц.
 
 
-namespace hw_03_task4
+namespace hw_02_task4
 {
     internal class Program
     {
