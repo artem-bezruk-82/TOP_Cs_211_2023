@@ -15,17 +15,7 @@ namespace hw_03_p1_task2_palindrome
     {
         static void Main(string[] args)
         {
-            int? valueInt = null;
-
-            do
-            {
-                valueInt = GetConsoleInput("Please enter at least 2-digits value");
-                if (valueInt < 10)
-                {
-                    Console.WriteLine("You have entered out of range value. Please try again.");
-                }
-            } while (valueInt < 10);
-
+            int valueInt = GetConsoleInput("Please enter at least 2-digits value", 10);
             Console.WriteLine(valueInt + (IsPalindrome(valueInt) ? " is" : " is not") + " palindrome");
         }
 
@@ -46,8 +36,11 @@ namespace hw_03_p1_task2_palindrome
             return valueStr == valueSB.ToString() ? true : false;
         }
 
-        static int GetConsoleInput(string requestText)
+        static int GetConsoleInput(string requestText, int startRange = int.MinValue, int endRange = int.MaxValue)
         {
+            if (startRange > endRange)
+                (startRange, endRange) = (endRange, startRange);
+
             int? value = null;
 
             while (value is null)
@@ -59,8 +52,13 @@ namespace hw_03_p1_task2_palindrome
                 }
                 catch (Exception exc)
                 {
-
                     Console.WriteLine($"{exc.Message} Please enter integer value");
+                }
+
+                if (value < startRange || value > endRange) 
+                {
+                    Console.WriteLine($"value {value} is out of {startRange}...{endRange} range");
+                    value = null;
                 }
             }
             return (int)value;
